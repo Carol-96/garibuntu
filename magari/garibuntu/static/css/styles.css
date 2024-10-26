@@ -1,0 +1,244 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Container */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background: #003366;
+    color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+.navbar a:hover {
+    color: #ff6600;
+}
+
+/* Menu Toggle (for mobile) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar nav.active {
+    display: block;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 2rem 0;
+    background: #f4f4f4;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    color: #003366;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #cc5200;
+}
+
+/* Section */
+.section {
+    margin: 2rem 0;
+}
+
+.section h3 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1rem;
+}
+
+/* Card */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 250px;
+    text-align: center;
+}
+
+.card h4 {
+    color: #003366;
+    margin-bottom: 0.5rem;
+}
+
+.card .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    background: #003366;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.card .btn:hover {
+    background: #002244;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #003366;
+    color: white;
+    margin-top: 2rem;
+}
+
+
+
+
+
+
+
+
+/* Profile Page */
+.profile-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Sponsor Page */
+.sponsor-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    width: 250px;
+}
+
+.sponsor-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Event Detail Page */
+.event-detail {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.event-detail p {
+    margin: 0.5rem 0;
+}
+
+
+
+/* Login and Registration Forms */
+
+
+/* Form Container Styling */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1rem;
+}
+
+.form-container .btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    color: #ffffff;
+    background-color: #003366;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.form-container .btn:hover {
+    background-color: #002244;
+}

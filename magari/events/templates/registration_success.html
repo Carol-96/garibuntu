@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Garibuntu - Registration Successful{% endblock %}
+{% block content %}
+
+<h2>Registration Successful!</h2>
+<p>Thank you for registering for {{ event.title }}. We look forward to seeing you there!</p>
+<a href="{% url 'event_list' %}" class="btn">Back to Events</a>
+
+{% endblock %}

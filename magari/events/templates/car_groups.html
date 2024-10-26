@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Garibuntu - Car Groups{% endblock %}
+{% block content %}
+
+<h2>Popular Car Groups</h2>
+<div class="card-container">
+    {% for group in car_groups %}
+        <div class="card">
+            <h4>{{ group.name }}</h4>
+            <p>{{ group.description }}</p>
+            <a href="#" class="btn">Join Group</a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

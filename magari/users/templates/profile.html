@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Garibuntu - Profile{% endblock %}
+{% block content %}
+
+<h2>Your Profile</h2>
+<div class="profile-container">
+    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Bio:</strong> {{ user.bio }}</p>
+</div>
+
+{% endblock %}

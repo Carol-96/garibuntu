@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Garibuntu - Home{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Welcome to Garibuntu</h2>
+    <p>Connecting car enthusiasts across Kenya.</p>
+    <a href="{% url 'register' %}" class="cta-button">Join the Community</a>
+</section>
+
+<!-- Upcoming Events -->
+<section class="section">
+    <h3>Upcoming Events</h3>
+    <div class="card-container">
+        {% for event in events %}
+            <div class="card">
+                <h4>{{ event.title }}</h4>
+                <p>{{ event.description }}</p>
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <a href="{% url 'register_for_event' event.id %}" class="btn">Register</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Car Groups -->
+<section class="section">
+    <h3>Popular Car Groups</h3>
+    <div class="card-container">
+        {% for group in car_groups %}
+            <div class="card">
+                <h4>{{ group.name }}</h4>
+                <p>{{ group.description }}</p>
+                <a href="#" class="btn">Join Group</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
