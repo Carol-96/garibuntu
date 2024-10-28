@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Thread List</h1>
+
+{% for thread in threads %}
+  {% if not thread.is_deleted %}
+    <div class="thread">
+      <h2>{{ thread.title }}</h2>
+      
+      {% if thread.is_locked %}
+        <span class="lock-icon" title="This thread is locked">🔒</span>
+      {% endif %}
+      
+      <p>{{ thread.content|truncatewords:20 }}</p>
+      
+      <a href="{% url 'forum:thread_detail' thread.id %}">View Thread</a>
+    </div>
+  {% else %}
+    <div class="thread-deleted">
+      <p>This thread has been deleted and is no longer available.</p>
+    </div>
+  {% endif %}
+{% empty %}
+  <p>No threads available.</p>
+{% endfor %}
+
+{% endblock %}

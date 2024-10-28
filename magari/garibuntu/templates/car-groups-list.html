@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Car Groups - Garibuntu{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Car Groups</h2>
+    <p>Explore our diverse community of car enthusiasts and join a group that fits your interests.</p>
+
+    <div class="car-groups-list">
+        {% for group in groups %}
+        <div class="car-group-card">
+            <h3>{{ group.name }}</h3>
+            <p>{{ group.description }}</p>
+            <a href="{% url 'garibuntu:car_group_detail' group.id %}" class="btn">View Group</a>
+        </div>
+        {% empty %}
+        <p>No car groups are currently available. Please check back later.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

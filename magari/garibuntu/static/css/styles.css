@@ -146,19 +146,16 @@ body {
 }
 
 /* Footer */
-footer {
+.footer-container {
     text-align: center;
     padding: 1rem;
     background: #003366;
     color: white;
     margin-top: 2rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
-
-
-
-
-
-
 
 
 /* Profile Page */
@@ -242,3 +239,78 @@ footer {
 .form-container .btn:hover {
     background-color: #002244;
 }
+
+
+/*Car Groups List*/
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.car-groups-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.car-group-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.car-group-card h3 {
+    margin-top: 0;
+}
+
+.car-group-card p {
+    color: #666;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.post-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+    border-top: 1px solid #ddd;
+  }
+  
+  .post-item {
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .post-item strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .post-item p {
+    margin: 0.5em 0;
+  }
+  
+  .post-timestamp {
+    font-size: 0.85em;
+    color: #888;
+  }
+  

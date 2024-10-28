@@ -6,7 +6,6 @@ from .models import Sponsor
 
 def sponsor_list(request):
     sponsors = Sponsor.objects.all()
-
-    return render(request, 'sponsors/sponsor_list.html', {'sponsors':sponsors})
+    return render(request, 'sponsor_list.html', {'sponsors':sponsors})
 
 

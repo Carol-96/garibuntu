@@ -1,0 +1,134 @@
+/* Basic reset for body */
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Top navigation bar styling */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.top-nav .side-logo h2,
+.top-nav .profile-logout ul {
+    margin: 0;
+}
+
+.top-nav .side-logo h2 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.top-nav .profile-logout ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin-right: 40px;
+}
+
+.top-nav .profile-logout ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.top-nav .profile-logout ul li a:hover {
+    color: #ddd;
+}
+
+/* Sidebar styling */
+.sidebar-content {
+    display: flex;
+    margin-top: 4rem; /* Offset for fixed top nav */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #222;
+    height: 100vh;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    padding-top: 0;
+    color: #fff;
+}
+
+.sidebar-logo {
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav ul li {
+    padding: 1rem;
+    text-align: center;
+}
+
+.sidebar-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.sidebar-nav ul li a:hover {
+    background-color: #444;
+}
+
+/* Content area styling */
+.dashboard-content {
+    margin-left: 250px; /* Sidebar width */
+    padding-left: 1rem;
+    margin-top: 0; /* Offset for top nav */
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    width: calc(100% - 250px);
+    left: 250px;
+    bottom: 0;
+    border: 10px solid red;
+}
+
+.lead-content {
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.lead-content-header {
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.lead-paragraph {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.user-name-nav {
+    color: blue;
+}

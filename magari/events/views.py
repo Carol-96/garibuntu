@@ -8,9 +8,7 @@ from .forms import EventForm, CarGroupForm
 
 def event_list(request):
     events = Event.objects.all()
-
-    return render(request, 'events/event_list.html', {'events':events})
-
+    return render(request, 'event_list.html', {'events':events})
 
 
 def register_for_event(request, event_id):
@@ -22,7 +20,7 @@ def register_for_event(request, event_id):
         registration.save()
         return redirect('event_list')
     
-    return render(request, 'events/event_register.html', {'event':event})
+    return render(request, 'event_register.html', {'event':event})
 
 
 @login_required
@@ -36,7 +34,7 @@ def create_event(request):
             return redirect('event_list')
     else:
         form = EventForm()
-    return render(request, 'events/event_form.html', {'form': form})  
+    return render(request, 'event_form.html', {'form': form})  
 
 
 
@@ -51,4 +49,4 @@ def create_car_group(request):
             return redirect('car_group_list')
     else:
         form = CarGroupForm()
-    return render(request, 'events/car_group_form.html', {'form': form})
+    return render(request, 'car_group_form.html', {'form': form})

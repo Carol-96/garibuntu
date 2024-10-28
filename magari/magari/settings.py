@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "users",
     "events",
     "sponsors",
+    "django_extensions",
+    "forum",
+    
     
 ]
 
@@ -128,3 +131,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Handling the "Remember Me" Option
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+
+LOGIN_REDIRECT_URL = 'home'  # or 'dashboard', or wherever you want logged-in users to go
+LOGOUT_REDIRECT_URL = 'home'  # or another public page

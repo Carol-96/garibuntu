@@ -14,13 +14,14 @@
     <!-- Header / Navbar -->
     <header>
         <div class="navbar">
-            <h1 class="logo"><a href="{% url 'home' %}">Garibuntu</a></h1>
+            <h1 class="logo"><a href="{% url 'garibuntu:home' %}">Garibuntu</a></h1>
             <nav>
-                <a href="{% url 'event_list' %}">Events</a>
-                <a href="#">Car Groups</a>
-                <a href="{% url 'sponsor_list' %}">Sponsors</a>
-                <a href="{% url 'register' %}">Register</a>
-                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'events:event_list' %}">Events</a>
+                <a href="{% url 'garibuntu:car_group_list' %}">Car Groups</a>
+                <a href="{% url 'sponsors:sponsor_list' %}">Sponsors</a>
+                <a href="{% url 'forum:thread_list' %}">Forum</a>
+                <a href="{% url 'users:register' %}">Register</a>
+                <a href="{% url 'users:login' %}">Login</a>
             </nav>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         </div>
@@ -31,7 +32,7 @@
         {% block script %}{% endblock script %}
     </main>
 
-    <footer>
+    <footer class="footer-container">
         <p>&copy; 2024 Garibuntu. All Rights Reserved.</p>
     </footer>
 

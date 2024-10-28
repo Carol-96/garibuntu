@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -36,4 +37,3 @@ class EventRegistration(models.Model):
 
     def __str__(self):
         return f"{self.user.username} registered for {self.event.title}"
-

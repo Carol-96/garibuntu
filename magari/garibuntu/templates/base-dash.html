@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard - Garibuntu{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="top-nav">
+        <div class="side-logo"><h2 class="sidebar-logo"><a href="{% url 'dashboard' %}">Garibuntu</a></h2></div>
+        <div class="profile-logout">
+            <ul>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{% url 'dashboard' %}">Dashboard Home</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Car Groups</a></li>
+                    <li><a href="#">Sponsors</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <main class="dashboard-content">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Garibuntu. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
