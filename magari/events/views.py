@@ -19,6 +19,7 @@ def register_for_event(request, event_id):
         if form.is_valid():
             form.save()
             return redirect('event_list')
+        
     
     return render(request, 'event_register.html', {'event':event, 'form':form})
 

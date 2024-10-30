@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import User
+from .models import User, Profile
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -40,3 +40,9 @@ class LoginForm(AuthenticationForm):
         widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         label="Remember Me"
     )
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'location', 'profile_picture']

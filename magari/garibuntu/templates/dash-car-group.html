@@ -1,0 +1,53 @@
+{% extends "base-dash.html" %}
+
+
+
+{% block content %}
+<div class="car-group-detail">
+    <!-- Car Group Header -->
+    <div class="car-group-header">
+        <h1>{{ car_group.name }}</h1>
+        <p>{{ car_group.location }}</p>
+    </div>
+    
+    <!-- Car Group Details -->
+    <section class="car-group-info">
+        <h2>About {{ car_group.name }}</h2>
+        <p>{{ car_group.description }}</p>
+    </section>
+
+    <!-- Recent Events -->
+    <section class="car-group-events">
+        <h2>Recent Events</h2>
+        {% if events %}
+            <ul>
+                {% for event in events %}
+                    <li>
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.date }} - {{ event.location }}</p>
+                        <p>{{ event.description|truncatewords:20 }}</p>
+                        <a href="{% url 'event_detail' event.id %}">View Event</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No recent events for this group.</p>
+        {% endif %}
+    </section>
+
+    <!-- Members -->
+    <section class="car-group-members">
+        <h2>Members</h2>
+        {% if members %}
+            <ul>
+                {% for member in members %}
+                    <li>{{ member.username }} - {{ member.email }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        
+            <p>No members listed yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

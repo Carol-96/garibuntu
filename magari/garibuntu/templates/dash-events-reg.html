@@ -1,0 +1,15 @@
+{% extends 'base-dash.html' %}
+{% block content %}
+<h2>Register for {{ event.title }}</h2>
+<p><strong>Date:</strong> {{ event.date }} at {{ event.time }}</p>
+<p><strong>Location:</strong> {{ event.location }}</p>
+<p><strong>Registration Fee:</strong> KSH {{ event.registration_fee }}</p>
+<p>{{ event.description }}</p>
+<form method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Confirm Registration</button>
+</form>
+    
+{% endblock content %}

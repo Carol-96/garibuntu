@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, LoginForm
-from .models import User
+from .forms import UserRegistrationForm, LoginForm, ProfileForm
+from .models import User, Profile
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
-
 from django.contrib.auth import get_user_model
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 User = get_user_model()
 
 # Create your views here.
 
 
 def profile(request):
-    return render(request, 'users/profile.html')
+    return render(request, 'profile.html')
 
 
 def register(request):
@@ -41,4 +42,24 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy('garibuntu:dashboard')
     
+
+@login_required
+def profile_view(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'profile_view.html', {'profile': profile})
+
+@login_required
+def edit_profile(request):
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated successfully.")
+            return redirect('profile_view')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'edit_profile.html', {'form': form})
    

@@ -137,5 +137,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 
-LOGIN_REDIRECT_URL = 'home'  # or 'dashboard', or wherever you want logged-in users to go
+LOGIN_REDIRECT_URL = '/login/'  # or 'dashboard', or wherever you want logged-in users to go
 LOGOUT_REDIRECT_URL = 'home'  # or another public page
+
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
