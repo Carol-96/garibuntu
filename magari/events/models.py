@@ -30,9 +30,17 @@ class Event(models.Model):
         return f"{self.title} - {self.date}"
     
 class EventRegistration(models.Model):
+    registration_types = [
+        ('sponsor', 'Sponsor'),
+        ('friend', 'Friend of the car group'),
+        ('member', 'Car group Member'),
+        ('other', 'Other')
+    ]
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     registration_date = models.DateTimeField(auto_now_add=True)
+    registration_type = models.CharField(max_length=20, choices=registration_types)
+    payment_confirmation_code = models.CharField(max_length=30)
     payment_status = models.BooleanField(default=False)
 
     def __str__(self):

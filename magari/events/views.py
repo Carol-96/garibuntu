@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Event, EventRegistration
 from django.contrib.auth.decorators import login_required
-from .forms import EventForm, CarGroupForm
+from .forms import EventForm, CarGroupForm, EventRegistrationForm
 
 
 # Create your views here.
@@ -13,14 +13,14 @@ def event_list(request):
 
 def register_for_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-
+    form = EventRegistrationForm()
     if request.method == 'POST':
-        registration, created = EventRegistration.objects.get_or_create(event=event, user=request.user)
-        registration_payment = True
-        registration.save()
-        return redirect('event_list')
+        form = EventRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('event_list')
     
-    return render(request, 'event_register.html', {'event':event})
+    return render(request, 'event_register.html', {'event':event, 'form':form})
 
 
 @login_required
