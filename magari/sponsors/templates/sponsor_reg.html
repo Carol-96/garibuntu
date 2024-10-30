@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Sponsor Registration - Garibuntu{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Register as a Sponsor</h2>
+    <form method="post" action="{% url 'sponsors:register_sponsor' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+
+        <button type="submit" class="btn btn-primary">Register as Sponsor</button>
+    </form>
+</div>
+{% endblock %}

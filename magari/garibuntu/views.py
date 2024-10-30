@@ -28,3 +28,6 @@ def event_list(request):
 def group_list_dash(request):
     car_groups = CarGroup.objects.all()
     return render(request, 'dash-groups.html', {'car_groups':car_groups})
+
+def master_register(request):
+    return render(request, 'master_registration.html')

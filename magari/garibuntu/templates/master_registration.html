@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Garibuntu{% endblock %}
+{% block content %}
+<h2>Select Registration Type</h2>
+<div class="registration-options">
+    <a href="{% url 'users:register' %}" class="btn">Register as Member</a>
+    <a href="{% url 'sponsors:register_sponsor' %}" class="btn">Register as Sponsor</a>
+</div>
+{% endblock %}
