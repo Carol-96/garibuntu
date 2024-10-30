@@ -1,68 +1,82 @@
+
+
 {% extends "base.html" %}
+
+{% load forum_extras %}
+{% load forum_extras %}  <!-- Load custom filter for safe dictionary access if needed -->
+
 {% block title %}{{ thread.title }} - Forum{% endblock %}
+
 {% block content %}
 
 {% if not thread.is_deleted %}
-<h2>{{ thread.title }}</h2>
-<p>{{ thread.description }}</p>
-<p>{{ thread.content }}</p>
+    <!-- Display the main thread title, description, and content -->
+    <h2>{{ thread.title }}</h2>
+    <p>{{ thread.description }}</p>
+    <p>{{ thread.content }}</p>
 
-{% if thread.is_locked %}
-<p class="thread-locked-message">This thread is locked. Further posts are disabled.</p>
-{% else %}
-<h3>Make a Post</h3>
-<form method="post" action="{% url 'forum:thread_detail' thread.id %}">
-    {% csrf_token %}
-    <div>
-        <textarea name="content" rows="4" required placeholder="Write your post here..."></textarea>
-    </div>
-    <button type="submit" class="btn" name="post_submit">Make a Post</button>
-</form>
-{% endif %}
-
-<h3>Posts Related to {{ thread.title }}</h3>
-{% if posts %}
-<ul class="post-list">
-    {% for post in posts %}
-    <li class="post-item">
-        <strong>{{ post.created_by }}</strong> said:
-        <p>{{ post.content }}</p>
-        <small class="post-timestamp">{{ post.created_at|date:"F j, Y, g:i a" }}</small>
-
-        <!-- Reply form for each post -->
-        <h4>Reply to this Post</h4>
+    {% if thread.is_locked %}
+        <p class="thread-locked-message">This thread is locked. Further posts are disabled.</p>
+    {% else %}
+        <!-- Form for creating a new post in this thread -->
+        <h3>Make a Post</h3>
         <form method="post" action="{% url 'forum:thread_detail' thread.id %}">
             {% csrf_token %}
-            <input type="hidden" name="post_id" value="{{ post.id }}">
             <div>
-                <textarea name="content" rows="3" required placeholder="Write your reply here..."></textarea>
+                {{ post_form.content }}  <!-- Render post form content field -->
+                
             </div>
-            <button type="submit" class="btn" name="reply_submit">Post Reply</button>
+            <button type="submit" class="btn" name="post_submit">Make a Post</button>
         </form>
+    {% endif %}
 
-        <!-- Replies for each post -->
-        <h5>Replies</h5>
-        {% if replies_by_post.post.id %}
-        <ul class="replies-list">
-            {% for reply in replies_by_post.post.id %}
-            <li class="reply-item">
-                <strong>{{ reply.created_by }}</strong> said:
-                <p>{{ reply.content }}</p>
-                <small class="reply-timestamp">{{ reply.created_at|date:"F j, Y, g:i a" }}</small>
-            </li>
+    <!-- List of posts related to this thread -->
+    <h3>Posts Related to {{ thread.title }}</h3>
+    {% if posts %}
+        <ul class="post-list">
+            {% for post in posts %}
+                <li class="post-item">
+                    <strong>{{ post.created_by }}</strong> said:
+                    <p>{{ post.content }}</p>
+                    <small class="post-timestamp">{{ post.created_at|date:"F j, Y, g:i a" }}</small>
+
+                    <!-- Reply form for each post, if the thread is not locked -->
+                    {% if not thread.is_locked %}
+                        <h4>Reply to this Post</h4>
+                        <form method="post" action="{% url 'forum:thread_detail' thread.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <div>
+                                <!-- Render reply form content field -->
+                                <textarea name="content" rows="3" required placeholder="Write your reply here...">{{ reply_form.content.value }}</textarea>
+                            </div>
+                            <button type="submit" class="btn" name="reply_submit">Post Reply</button>
+                        </form>
+                    {% endif %}
+
+                    <!-- Display replies for this post -->
+                    <h5>Replies</h5>
+                    {% if replies_by_post|get_item:post.id %}
+                        <ul class="replies-list">
+                            {% for reply in replies_by_post|get_item:post.id %}
+                                <li class="reply-item">
+                                    <strong>{{ reply.created_by }}</strong> said:
+                                    <p>{{ reply.content }}</p>
+                                    <small class="reply-timestamp">{{ reply.created_at|date:"F j, Y, g:i a" }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No replies yet for this post.</p>
+                    {% endif %}
+                </li>
             {% endfor %}
         </ul>
-        {% else %}
-        <p>No replies yet for this post.</p>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
+    {% else %}
+        <p>No posts yet. Be the first to make a post related to {{ thread.title }}!</p>
+    {% endif %}
 {% else %}
-<p>No posts yet. Be the first to make a post related to {{ thread.title }}!</p>
-{% endif %}
-{% else %}
-<p>This thread has been deleted and is no longer available.</p>
+    <p>This thread has been deleted and is no longer available.</p>
 {% endif %}
 
 {% endblock %}

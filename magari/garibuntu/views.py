@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from events.models import CarGroup
+from events.models import CarGroup, Event
 
 
 # Create your views here.
@@ -19,3 +19,12 @@ def car_group_list(request):
 def car_group_detail(request, group_id):
     car_group = get_object_or_404(CarGroup, pk=group_id)
     return render(request, 'car_group_detail.html', {'car_group': car_group})
+
+
+def event_list(request):
+    events = Event.objects.all()
+    return render(request, 'dash-events.html', {'events':events})
+
+def group_list_dash(request):
+    car_groups = CarGroup.objects.all()
+    return render(request, 'dash-groups.html', {'car_groups':car_groups})

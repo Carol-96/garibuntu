@@ -8,10 +8,15 @@
     <p><strong>Location:</strong> {{ event.location }}</p>
     <p><strong>Registration Fee:</strong> KSH {{ event.registration_fee }}</p>
     <p>{{ event.description }}</p>
+    <h4>Payment methods accepted</h4>
+    <ul>
+        <li>Mpesa</li>
+        <li>PayPal</li>
+        <li>Bank Transfer</li>
+    </ul>
 </div>
 <form method="post">
     {% csrf_token %}
     <button type="submit" class="btn">Register for Event</button>
 </form>
-
 {% endblock %}

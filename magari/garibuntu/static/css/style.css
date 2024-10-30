@@ -93,6 +93,9 @@ body {
     background-color: #444;
 }
 
+
+
+
 /* Content area styling */
 .dashboard-content {
     margin-left: 250px; /* Sidebar width */
@@ -131,4 +134,41 @@ body {
 
 .user-name-nav {
     color: blue;
+}
+
+
+
+.dashboard-container {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.events-table th, .events-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.events-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.events-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.view-details, .register-button {
+    color: #3490dc;
+    text-decoration: none;
+}
+
+.view-details:hover, .register-button:hover {
+    text-decoration: underline;
 }

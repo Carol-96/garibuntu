@@ -39,6 +39,6 @@ class CustomLoginView(LoginView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('dashboard')
+        return reverse_lazy('garibuntu:dashboard')
     
    

@@ -11,7 +11,7 @@
 
 <body>
     <div class="top-nav">
-        <div class="side-logo"><h2 class="sidebar-logo"><a href="{% url 'dashboard' %}">Garibuntu</a></h2></div>
+        <div class="side-logo"><h2 class="sidebar-logo"><a href="{% url 'garibuntu:dashboard' %}">Garibuntu</a></h2></div>
         <div class="profile-logout">
             <ul>
                 <li><a href="#">Notifications</a></li>
@@ -25,11 +25,11 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="{% url 'dashboard' %}">Dashboard Home</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Car Groups</a></li>
-                    <li><a href="#">Sponsors</a></li>
-                    <li><a href="#">Forum</a></li>
+                    <li><a href="{% url 'garibuntu:dashboard' %}">Dashboard Home</a></li>
+                    <li><a href="{% url 'garibuntu:event_list' %}">Events</a></li>
+                    <li><a href="{% url 'garibuntu:group_list_dash' %}">Car Groups</a></li>
+                    <li><a href="{% url 'sponsors:sponsor_list' %}">Sponsors</a></li>
+                    <li><a href="{% url 'forum:thread_list' %}">Forum</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Logout</a></li>
                 </ul>
@@ -39,6 +39,11 @@
     <main class="dashboard-content">
         {% block content %}{% endblock %}
     </main>
+
+
+
+
+    
     <footer class="footer">
         <p>&copy; 2024 Garibuntu. All rights reserved.</p>
     </footer>

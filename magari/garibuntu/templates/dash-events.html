@@ -1,0 +1,38 @@
+{% extends 'base-dash.html' %}
+{% block content %}
+<div class="events-section">
+    <h3>Upcoming Events</h3>
+    {% if events %}
+    <table class="events-table">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.date|date:"F d, Y" }}</td>
+                    <td>{{ event.description|truncatewords:15 }}</td>
+                    <td>
+                        <a href="{% url 'events:event_list' %}" class="view-details">View Details</a>
+                        {% if user.is_authenticated %}
+                            <a href="#" class="register-button">Register</a>
+                        {% else %}
+                            <a href="{% url 'users:login' %}">Log in to Register</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No upcoming events at the moment.</p>
+{% endif %}
+</div>
+</div>
+{% endblock content %}
