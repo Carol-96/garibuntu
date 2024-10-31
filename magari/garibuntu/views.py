@@ -5,6 +5,7 @@ from events.models import CarGroup, Event, EventRegistration
 from events.forms import EventRegistrationForm
 from sponsors.models import Sponsor
 from django.contrib.auth import logout
+from django.utils import timezone
 
 
 # Create your views here.
@@ -14,7 +15,24 @@ def home(request):
 
 def dashboard(request):
     user = request.user
-    return render(request, 'dashboard.html', {'user':user})
+
+
+    total_events = Event.objects.count()
+    upcoming_events = Event.objects.filter(date__gte=timezone.now().date())
+    recent_events = Event.objects.order_by('-date')[:5]  # Last 5 events
+    upcoming_trips = upcoming_events.filter(title__icontains='trip')[:5]  # Filter by keyword 'trip'
+    car_groups_count = CarGroup.objects.filter(members=request.user).count()
+
+    context = {
+        'total_events': total_events,
+        'upcoming_events_count': upcoming_events.count(),
+        'recent_events': recent_events,
+        'upcoming_trips': upcoming_trips,
+        'car_groups_count': car_groups_count,
+        'user':user,
+    }
+
+    return render(request, 'dashboard.html', context)
 
 def car_group_list(request):
     groups = CarGroup.objects.all()

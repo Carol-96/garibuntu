@@ -1,4 +1,5 @@
 {% extends "base-dash.html" %}
+{% load static %}
 
 {% block title %}Dashboard Yetu{% endblock %}
 
@@ -8,12 +9,75 @@
     <p class="lead-paragraph">Here is an overview of your activity, recent events, and updates.</p>
 </div>
 
-<div class="dashboard-widgets">
-   
+<div class="dashboard-container">
     
-    <div class="dashboard-container">
-    
-        
-    
+
+    <!-- Quick Stats Section -->
+    <div class="dashboard-stats">
+        <a href="{% url 'garibuntu:event_list' %}">
+        <div class="stat-box-1">
+            <h3>Total Events</h3>
+            <p>{{ total_events }}</p>
+        </div>
+        </a>
+        <a href="{% url 'garibuntu:event_list' %}">
+        <div class="stat-box-2">
+            <h3>Upcoming Events</h3>
+            <p>{{ upcoming_events_count }}</p>
+        </div>
+        </a>
+        <a href="{% url 'garibuntu:group_list_dash' %}">
+        <div class="stat-box-3">
+            <h3>Car Groups Joined</h3>
+            <p>{{ car_groups_count }}</p>
+        </div>
+        </a>
+    </div>
+
+    <!-- Recent Events Section -->
+    <div class="dashboard-section">
+        <h2>Recent Events</h2>
+        <ul class="event-list">
+            {% for event in recent_events %}
+            <li class="event-item">
+                <a href="{% url 'garibuntu:event_detail' event.id %}">
+                    <h3>{{ event.title }}</h3>
+                </a>
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <p><strong>Location:</strong> {{ event.location }}</p>
+                <p>{{ event.description|truncatewords:20 }}</p>
+            </li>
+            {% empty %}
+            <p>No recent events available.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Upcoming Trips Section -->
+    <div class="dashboard-section">
+        <h2>Upcoming Trips</h2>
+        <ul class="trip-list">
+            {% for trip in upcoming_trips %}
+            <li class="trip-item">
+                <h3>{{ trip.title }}</h3>
+                <p><strong>Destination:</strong> {{ trip.destination }}</p>
+                <p><strong>Date:</strong> {{ trip.start_time|date:"F j, Y" }}</p>
+            </li>
+            {% empty %}
+            <p>No upcoming trips scheduled.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="dashboard-section">
+        <h2>Quick Links</h2>
+        <div class="quick-links">
+            <a href="#" class="btn btn-primary">Create New Event</a>
+            <a href="#" class="btn btn-secondary">View Profile</a>
+            <a href="#" class="btn btn-secondary">Browse Car Groups</a>
+        </div>
+    </div>
+</div>    
 </div>
 {% endblock %}
