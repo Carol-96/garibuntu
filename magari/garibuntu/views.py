@@ -64,7 +64,7 @@ def event_register(request, event_id):
             registration.event = event
             registration.save()
             messages.success(request, 'You have successfully been registered.')
-            return redirect('events:event_list')
+            return redirect('garibuntu:event_list')
         else:
             form = EventRegistrationForm()
 
@@ -81,3 +81,8 @@ def logout_user(request):
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('garibuntu:home')  # Redirect to the login page or any other page
+
+
+def event_detail(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, 'event-detail-dash.html', {'event': event})

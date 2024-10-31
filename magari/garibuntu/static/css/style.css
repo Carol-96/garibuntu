@@ -13,11 +13,11 @@ body {
     align-items: center;
     background-color: #333;
     color: #fff;
-    padding: 1rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 10;
+    border: 3px solid red;
 }
 
 .top-nav .side-logo h2,
@@ -47,6 +47,15 @@ body {
 .top-nav .profile-logout ul li a:hover {
     color: #ddd;
 }
+
+.profile-logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+}
+
 
 /* Sidebar styling */
 .sidebar-content {
@@ -105,16 +114,15 @@ body {
     min-height: 100vh;
 }
 
-.footer {
+.footer-dash {
     text-align: center;
-    padding: 1rem;
+    padding: 0;
     background-color: #333;
     color: #fff;
     position: fixed;
     width: calc(100% - 250px);
     left: 250px;
     bottom: 0;
-    border: 10px solid red;
 }
 
 .lead-content {
@@ -186,11 +194,12 @@ body {
 }
 
 .dropdown-toggle {
-    background-color: #4CAF50; /* Green */
+    background-color: #333333; /* Same as navbar*/
     color: white;
     padding: 10px;
     font-size: 16px;
     border: none;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -201,6 +210,7 @@ body {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border: 3px solid yellow;
 }
 
 .dropdown-content a {
@@ -216,4 +226,218 @@ body {
 
 .show {
     display: block;
+}
+
+/* Edit Profile Page*/
+
+/* Container styling */
+.edit-profile-container {
+    max-width: 700px;
+    height: 500px;
+    overflow-y: auto; 
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile picture or avatar */
+.profile-picture {
+    width: 30px;                  
+    height: 30px;
+    border-radius: 50%;           
+    object-fit: cover;             
+    border: 3px solid #007bff;                    
+    background-color: #f9f9f9;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+/* Hover effect for profile picture */
+.profile-picture:hover {
+    transform: scale(1.05);        
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.current-profile-picture {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Avatar image */
+.current-profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;            
+    object-fit: cover;              
+    padding: 5px;                  
+    background-color: #f9f9f9;      
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease; 
+}
+
+/* Avatar hover effect */
+.current-profile-picture img:hover {
+    transform: scale(1.05);         
+}
+
+
+/* Form styling */
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-profile-form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="email"],
+.edit-profile-form input[type="file"],
+.edit-profile-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.edit-profile-form .btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    margin-left: 10px;
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Cancel button alignment */
+.edit-profile-form a.btn-secondary {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.edit-profile-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* Profile Dash Avartar */
+.profile-picture-dash {
+    width: 50px;                  
+    height: 50px;
+    border-radius: 50%;           
+    object-fit: cover;             
+    border: 3px solid #007bff;                    
+    background-color: #f9f9f9;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Hover effect for profile picture */
+.profile-picture:hover {
+    transform: scale(1.05);        
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+
+.profile-container {
+    margin: 20px auto;
+    width: 60%;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.profile-head {
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Event Details*/
+.event-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-poster {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.poster-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.event-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
 }

@@ -11,13 +11,22 @@
 
 <body>
     <div class="top-nav">
-        <div class="side-logo"><h2 class="sidebar-logo"><a href="{% url 'garibuntu:dashboard' %}">Garibuntu</a></h2></div>
+        <div class="side-logo">
+            <h2 class="sidebar-logo"><a href="{% url 'garibuntu:dashboard' %}">Garibuntu</a></h2>
+        </div>
         <div class="profile-logout">
-            <ul>
-                <li><a href="#">Notifications</a></li>
+                <div class="notifications">
+                    <a href="#">Notifications</a>
+                </div>
                 <div class="profile-dropdown">
                     <button class="dropdown-toggle" onclick="toggleDropdown()">
-                        Profile ▼
+                        {% if user.profile.profile_picture %}
+                        <img src="{{ user.profile.profile_picture.url }}" alt="Current Profile Picture"
+                            class="profile-picture-dash">
+                        {% else %}
+                        <img src="{% static 'images/default-avatar.jpg' %}" alt="Default Avatar"
+                            class="profile-picture-dash">
+                        {% endif %}
                     </button>
                     <div id="dropdownMenu" class="dropdown-content">
                         <a href="{% url 'users:profile_view' %}">View Profile</a>
@@ -25,8 +34,6 @@
                         <a href="{% url 'garibuntu:logout' %}">Logout</a>
                     </div>
                 </div>
-              
-            </ul>
         </div>
     </div>
     <div class="sidebar-content">
@@ -52,8 +59,8 @@
     <script src="{% static 'js/script.js' %}"></script>
 
 
-    
-    <footer class="footer">
+
+    <footer class="footer-dash">
         <p>&copy; 2024 Garibuntu. All rights reserved.</p>
     </footer>
 

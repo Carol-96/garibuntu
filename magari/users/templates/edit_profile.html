@@ -1,7 +1,38 @@
-<h2>Edit Profile</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-</form>
-<a href="{% url 'users:profile_view' %}">Cancel</a>
+{% extends "base-dash.html" %}
+{% load static %}
+
+{% block title %}Edit Your Profile{% endblock %}
+
+{% block content %}
+<div class="edit-profile-container">
+    <h2>Edit Profile</h2>
+    {% if user.profile.profile_picture %}
+        <img src="{{ user.profile.profile_picture.url }}" alt="Current Profile Picture" class="profile-picture">
+    {% else %}
+        <img src="{% static 'images/default-avatar.jpg' %}" alt="Default Avatar" class="profile-picture">
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" class="edit-profile-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_bio">Bio</label>
+            {{ form.bio }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_location">Location</label>
+            {{ form.location }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_profile_picture">Update Profile Picture</label>
+            {{ form.profile_picture }}
+        </div>
+
+        <div class="edit-profile-buttons">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'users:profile_view' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

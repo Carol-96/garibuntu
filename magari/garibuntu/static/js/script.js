@@ -10,7 +10,7 @@ function toggleDropdown() {
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.dropdown-toggle')) {
+    if (!event.target.matches('.dropdown-toggle, .profile-picture-dash')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         for (var i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];

@@ -1,0 +1,40 @@
+{% extends "base-dash.html" %}
+{% load static %}
+
+{% block title %}{{ event.title }} - Event Details{% endblock %}
+
+{% block content %}
+<div class="event-container">
+    <h1 class="event-title">{{ event.title }}</h1>
+
+    <!-- Event poster, with placeholder if none exists -->
+    <div class="event-poster">
+        {% if event.poster %}
+            <img src="{{ event.poster.url }}" alt="{{ event.title }} Poster" class="poster-image">
+        {% else %}
+            <img src="{% static 'images/default-event-poster.jpg' %}" alt="Default Event Poster" class="poster-image">
+        {% endif %}
+    </div>
+
+    <!-- Event details section -->
+    <div class="event-details">
+        <p><strong>Destination:</strong> {{ event.destination }}</p>
+        <p><strong>Meeting Point:</strong> {{ event.meeting_point }}</p>
+        <p><strong>Start Time:</strong> {{ event.start_time|date:"F j, Y, g:i a" }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+        
+        <!-- Additional event information relevant for car enthusiasts -->
+        <p><strong>Route Details:</strong> {{ event.route_details }}</p>
+        <p><strong>Highlights:</strong> {{ event.highlights }}</p>
+        <p><strong>Car Requirements:</strong> {{ event.car_requirements }}</p>
+        <p><strong>Event Organizers:</strong> {{ event.organizers }}</p>
+        <p><strong>Expected Weather:</strong> {{ event.weather_forecast }}</p>
+    </div>
+
+    <!-- Call to action buttons -->
+    <div class="event-actions">
+        <button class="btn btn-primary">Register for Event</button>
+        <button class="btn btn-secondary">Share Event</button>
+    </div>
+</div>
+{% endblock %}

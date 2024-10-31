@@ -24,7 +24,7 @@ class Event(models.Model):
     group = models.ForeignKey(CarGroup, on_delete=models.CASCADE, related_name='events')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='organized_events')
     attendees = models.ManyToManyField(User, through='EventRegistration', related_name='events')
-
+    poster = models.ImageField(upload_to='event_posters/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} - {self.date}"

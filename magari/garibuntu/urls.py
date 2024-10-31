@@ -15,4 +15,5 @@ urlpatterns = [
     path('car-group-detail/<int:group_id>/', views.car_group_dash, name='car_group_dash'),
     path('dash-sponsors/', views.sponsor_list, name='sponsor_list'),
     path('logout/', views.logout_user, name='logout'),
+    path('event/<int:pk>/', views.event_detail, name='event_detail'),
 ]

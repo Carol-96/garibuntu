@@ -23,7 +23,7 @@
         <tbody>
             {% for event in events %}
                 <tr>
-                    <td>{{ event.title }}</td>
+                    <td><a href="{% url 'garibuntu:event_detail' event.id %}">{{ event.title }}</a></td>
                     <td>{{ event.date|date:"F d, Y" }}</td>
                     <td>{{ event.description|truncatewords:15 }}</td>
                     <td>
