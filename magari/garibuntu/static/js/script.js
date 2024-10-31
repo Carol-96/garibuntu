@@ -20,3 +20,12 @@ window.onclick = function(event) {
         }
     }
 }
+
+
+// Automatically close pop-up messages after 5 seconds
+setTimeout(function() {
+    var messages = document.querySelectorAll('.popup-message');
+    messages.forEach(function(message) {
+        message.style.display = 'none';
+    });
+}, 5000); // 5000ms = 5 seconds

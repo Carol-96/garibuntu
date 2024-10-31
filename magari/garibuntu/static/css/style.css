@@ -520,3 +520,44 @@ h1 {
 .quick-links .btn {
     margin-right: 10px;
 }
+
+
+/* messages */
+
+#message-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+.popup-message {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.popup-message.success { background-color: #4caf50; }  /* Green for success */
+.popup-message.error { background-color: #f44336; }    /* Red for error */
+.popup-message.info { background-color: #2196f3; }     /* Blue for info */
+.popup-message.warning { background-color: #ff9800; }  /* Orange for warning */
+
+.close-message {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

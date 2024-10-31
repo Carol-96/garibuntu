@@ -2,9 +2,14 @@
 {% block content %}
 
 {% if messages %}
-    {% for message in messages %}
-    {{ message }}
-    {% endfor %}
+    <div id="message-container">
+        {% for message in messages %}
+            <div class="popup-message {{ message.tags }}">
+                {{ message }}
+                <span class="close-message" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endfor %}
+    </div>
 {% endif %}
 
 
