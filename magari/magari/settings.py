@@ -89,7 +89,7 @@ WSGI_APPLICATION = "magari.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.getenv("DB_NAME"),
+        "NAME": os.getenv("DB_NAME", "db.sqlite3"),
         "HOST": os.getenv("DB_HOST", "localhost"),
         "PORT": os.getenv("DB_PORT", "5432"),
     }
