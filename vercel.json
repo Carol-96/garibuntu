@@ -1,14 +1,14 @@
 {
   "builds": [
     {
-      "src": "magari/wsgi.py",
+      "src": "garibuntu/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "magari/wsgi.py"
+      "dest": "garibuntu/wsgi.py"
     }
   ]
 }
