@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}Register - Garibuntu{% endblock %}
+
 {% block content %}
-<h2>Select Registration Type</h2>
-<div class="registration-options">
-    <a href="{% url 'users:register' %}" class="btn">Register as Member</a>
-    <a href="{% url 'sponsors:register_sponsor' %}" class="btn">Register as Sponsor</a>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to Garibuntu</h1>
+        <p>Join our community of car enthusiasts and sponsors. Choose your registration type below and start your journey with us!</p>
+        <div class="registration-options">
+            <a href="{% url 'users:register' %}" class="btn btn-member">Register as Member</a>
+            <a href="{% url 'sponsors:register_sponsor' %}" class="btn btn-sponsor">Register as Sponsor</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

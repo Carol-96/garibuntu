@@ -1,21 +1,43 @@
 {% extends "base.html" %}
-{% block title %}Garibuntu - Register{% endblock %}
+
+{% block title %}User Registration - Garibuntu{% endblock %}
+
 {% block content %}
-
-<h2>Register for Garibuntu</h2>
-<div class="form-container">
-    <!-- Form begins here -->
-    <form method="post" enctype="multipart/form-data">
+<div class="user-registration-container">
+    <h2>Create Your Account</h2>
+    <p>Please fill out the form to register as a user.</p>
+    <form method="post" enctype="multipart/form-data" class="user-registration-form">
         {% csrf_token %}
-        <!-- Render form fields with as_p to show each field in a separate paragraph -->
-        {{ form.as_p }}
+        
+        <div class="form-group">
+            <label for="id_username">Username 
+                <span class="tooltip-icon" title="Choose a unique username. This will be your login ID. Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.">ℹ️</span>
+            </label>
+            {{ form.username }}
+        </div>
 
-        <!-- Submit button for form submission -->
-        <button type="submit" class="btn">Register</button>
+        <div class="form-group">
+            <label for="id_email">Email
+                <span class="tooltip-icon" title="Enter a valid email address for account verification.">ℹ️</span>
+            </label>
+            {{ form.email }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_password1">Password
+                <span class="tooltip-icon" title="Your password should be at least 8 characters, including letters and numbers. Your password can’t be too similar to your other personal information.Your password can’t be entirely numeric.">ℹ️</span>
+            </label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_password2">Confirm Password
+                <span class="tooltip-icon" title="Re-enter the password to confirm. It should match the password above.">ℹ️</span>
+            </label>
+            {{ form.password2 }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
-
-    <!-- Link for users who already have an account -->
-    <p class="mt-3">Already have an account? <a href="{% url 'users:login' %}">Log in here</a>.</p>
 </div>
-
 {% endblock %}
