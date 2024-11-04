@@ -126,7 +126,7 @@ The system sends email notifications to users for the following activities:
 
 ## Future Improvements
 
-- *****Social Media Login Integration**: Allow users to register/login via social media platforms like Google and Facebook.
+- **Social Media Login Integration**: Allow users to register/login via social media platforms like Google and Facebook.
 - **Enhanced User Analytics**: Provide analytics for user engagement in events, sponsorships, and forums.
 - **Automated Payment Integration**: Integrate a payment gateway for direct payments and automatic verification.
 
