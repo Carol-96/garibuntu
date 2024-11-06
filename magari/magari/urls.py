@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('garibuntu.urls')),
     path('events/', include('events.urls')),
     path('users/', include('users.urls')),
-    path('sponsors/', include('sponsors.urls')),
     path('forum/', include('forum.urls')),
+    path('sponsors/', include('sponsors.urls')),
 ]

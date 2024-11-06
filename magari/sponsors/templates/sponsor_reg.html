@@ -1,45 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Sponsor Registration Page - Garibuntu{% endblock %}
+{% block title %}Sponsor Registration{% endblock %}
 
 {% block content %}
-<div class="sponsor-registration-container">
+<div class="registration-container">
     <h2>Register as a Sponsor</h2>
-    <p>Please fill out the form below to register as a sponsor.</p>
-    <form method="post" enctype="multipart/form-data" class="sponsor-registration-form">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        <div class="form-group">
-            <label for="id_company_name">Company Name</label>
-            {{ form.company_name }}
-        </div>
-
-        <div class="form-group">
-            <label for="id_contact_person">Contact Person</label>
-            {{ form.contact_person }}
-        </div>
-
-        <div class="form-group">
-            <label for="id_email">Email</label>
-            {{ form.email }}
-        </div>
-
-        <div class="form-group">
-            <label for="id_phone_number">Phone Number</label>
-            {{ form.phone_number }}
-        </div>
-
-        <div class="form-group">
-            <label for="id_logo">Company Logo</label>
-            {{ form.logo }}
-        </div>
-
-        <div class="form-group">
-            <label for="id_website">Website URL</label>
-            {{ form.website }}
-        </div>
-
-        <button type="submit" class="btn btn-primary">Register Sponsor</button>
+        {{ form.as_p }}
+        <button type="submit" class="register-button">Register</button>
     </form>
 </div>
 {% endblock %}

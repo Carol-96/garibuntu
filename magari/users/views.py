@@ -47,7 +47,7 @@ def register(request):
 class CustomLoginView(LoginView):
     template_name = 'login.html'
     authentication_form = LoginForm
-    redirect_authenticated_user = False
+    redirect_authenticated_user = True
 
     def form_valid(self, form):
         remember_me = form.cleaned_data.get('remember_me')

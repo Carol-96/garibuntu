@@ -5,19 +5,34 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
+
+# Form for user registration
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    profile_picture = forms.ImageField(required=False)
-    bio = forms.CharField(widget=forms.Textarea, required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'profile_picture', 'bio']
+        fields = ['username', 'email', 'password1', 'password2']
 
+
+class SponsorRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']
+        widgets = {'password': forms.PasswordInput()}
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_sponsor = True  # Mark this user as a sponsor
+
+
+# Form for updating user fields only (username and email)
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'profile_picture', 'bio']
+        fields = ['username', 'email']  # Removed profile_picture and bio
+
 
 
 class LoginForm(AuthenticationForm):

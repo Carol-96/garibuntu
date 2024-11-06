@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from sponsors.sponsor_login_required import SponsorLoginRequiredMiddleware
 
 # Load environment variables from .env file
 load_dotenv()
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "sponsors",
     "django_extensions",
     "forum",
+    'phonenumber_field',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",  # For serving static files in production
+    'sponsors.sponsor_login_required.SponsorLoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = "magari.urls"
@@ -115,6 +118,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Session and redirect settings
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 LOGIN_REDIRECT_URL = "/login/"
+LOGIN_URL = 'sponsors:sponsor_login'
 LOGOUT_REDIRECT_URL = "home"
 
 # Security settings for production

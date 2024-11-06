@@ -10,10 +10,14 @@ from django.dispatch import receiver
 class User(AbstractUser):
     # Adding additional fields for profile customization
     email = models.EmailField(unique=True)
+    is_sponsor = models.BooleanField(default=False)  # Add this line to distinguish sponsors
+    
+    '''
     profile_picture = models.ImageField(upload_to='profiles/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
+    '''
     
-    def _str_(self):
+    def __str__(self):
         return self.username
     
 
@@ -26,9 +30,9 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
-
-    @receiver(post_save, sender=User)
-    def create_or_update_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-        instance.profile.save()
+    
+@receiver(post_save, sender=User)
+def create_or_update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()

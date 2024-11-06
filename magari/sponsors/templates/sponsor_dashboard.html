@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="sponsor-header">
+        <h1>Welcome to the Sponsor Dashboard</h1>
+        <div class="sponsor-profile">
+            <img src="{{ user.sponsor.logo.url }}" alt="Logo" class="sponsor-logo">
+            <div class="sponsor-info">
+                <h2>{{ user.sponsor.company_name }}</h2>
+                <p>{{ user.sponsor.phone_number }}</p>
+                <a href="{{ user.sponsor.website_url }}" target="_blank">Visit Website</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="sponsor-main">
+        <section class="dashboard-section">
+            <h2>Upcoming Events</h2>
+            <table class="event-table">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.date|date:"F j, Y" }}</td>
+                            <td>{{ event.status }}</td>
+                            <td>
+                                {% if not event.is_sponsored %}
+                                    <a href="{% url 'sponsor_event' event.id %}" class="btn-action">Sponsor</a>
+                                {% else %}
+                                    Sponsored
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Manage Sponsorships</h2>
+            <p>View and update your current sponsorships for car community events.</p>
+            <a href="#" class="btn-primary">Manage Sponsorships</a>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Announcements</h2>
+            <ul class="announcement-list">
+                {% for announcement in announcements %}
+                    <li>
+                        <h3>{{ announcement.title }}</h3>
+                        <p>{{ announcement.content }}</p>
+                        <span class="announcement-date">{{ announcement.date|date:"F j, Y" }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer class="sponsor-footer">
+        <p>&copy; 2024 Car Community. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
