@@ -16,4 +16,5 @@ urlpatterns = [
     path('dash-sponsors/', views.sponsor_list, name='sponsor_list'),
     path('logout/', views.logout_user, name='logout'),
     path('event/<int:pk>/', views.event_detail, name='event_detail'),
+    path('master-login', views.master_register, name='master_login'),
 ]

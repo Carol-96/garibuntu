@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from events.models import Event
 from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
 
@@ -24,6 +25,15 @@ class Sponsor(models.Model):
         return self.company_name
 
 
+class Sponsorship(models.Model):
+    sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    sponsorship_description = models.TextField(help_text="Describe the type or nature of the sponsorship.")
+    sponsorship_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text="Optional amount for monetary sponsorship.")
+    sponsored_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sponsor.company_name} sponsoring {self.event.title}"
 
 class Announcement(models.Model):
     message = models.TextField()

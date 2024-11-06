@@ -33,14 +33,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for event in events %}
+                    {% for event in all_events %}
                         <tr>
                             <td>{{ event.title }}</td>
                             <td>{{ event.date|date:"F j, Y" }}</td>
                             <td>{{ event.status }}</td>
                             <td>
                                 {% if not event.is_sponsored %}
-                                    <a href="{% url 'sponsor_event' event.id %}" class="btn-action">Sponsor</a>
+                                    <a href="{% url 'sponsors:sponsor_event' %}" class="btn-action">Sponsor</a>
                                 {% else %}
                                     Sponsored
                                 {% endif %}
@@ -54,7 +54,7 @@
         <section class="dashboard-section">
             <h2>Manage Sponsorships</h2>
             <p>View and update your current sponsorships for car community events.</p>
-            <a href="#" class="btn-primary">Manage Sponsorships</a>
+            <a href="{% url 'sponsors:sponsor_event' %}" class="btn-primary">Manage Sponsorships</a>
         </section>
 
         <section class="dashboard-section">

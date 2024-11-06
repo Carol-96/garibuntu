@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django import forms
 from .models import Sponsor
 from django.contrib.auth.hashers import make_password
+from .models import Sponsorship
 
 
 User = get_user_model()
@@ -43,6 +44,14 @@ class SponsorRegistrationForm(forms.ModelForm):
         return sponsor
 
 
+class SponsorshipForm(forms.ModelForm):
+    class Meta:
+        model = Sponsorship
+        fields = ['sponsorship_description', 'sponsorship_amount']
+        widgets = {
+            'sponsorship_description': forms.Textarea(attrs={'placeholder': 'Describe your sponsorship type...'}),
+            'sponsorship_amount': forms.NumberInput(attrs={'placeholder': 'Enter amount if applicable'}),
+        }
 
 
 class SponsorLoginForm(forms.Form):

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Login Into Your Garibuntu Account {% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to Garibuntu</h1>
+        <p>Join our community of car enthusiasts and sponsors. Choose your registration type below and start your journey with us!</p>
+        <div class="registration-options">
+            <a href="{% url 'users:login' %}" class="btn btn-member">Login as Member</a>
+            <a href="{% url 'sponsors:sponsor_login' %}" class="btn btn-sponsor">Login as Sponsor</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

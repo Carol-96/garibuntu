@@ -1,0 +1,39 @@
+<!-- sponsor_event.html -->
+ {% load static %}
+<!-- sponsor_event.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sponsor an Event</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="sponsor-event-body">
+    <div class="sponsor-event-container">
+
+        <h1 class="sponsor-event-header">Sponsor an Event</h1>
+
+        <ul class="sponsor-event-list">
+            {% for event in events %}
+                <li class="sponsor-event-item">
+                    <strong class="sponsor-event-item-title">{{ event.title }}</strong> - {{ event.date }}
+                    {% if event.id in sponsored_events %}
+                        <p class="sponsor-event-status">Status: Already Sponsored</p>
+                    {% else %}
+                        <form method="post" action="{% url 'sponsors:sponsor_event' %}" class="sponsor-event-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="event_id" value="{{ event.id }}">
+                            {{ form.as_p }}
+                            <button type="submit" class="sponsor-event-button">Sponsor this Event</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Button to return to Dashboard -->
+        <a href="{% url 'sponsors:sponsor_dashboard' %}" class="sponsor-event-dashboard-button">
+            ← Back to Dashboard
+        </a>
+    </div>
+</body>
+</html>

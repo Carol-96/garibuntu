@@ -11,8 +11,12 @@ class SponsorLoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Check if the request path is for sponsor pages
+        # Allow access to registration and login pages without needing to be authenticated
+        if request.path in [reverse('sponsors:sponsor_register'), reverse('sponsors:sponsor_login')]:
+            return self.get_response(request)
+
+        # For other sponsor pages, enforce login
         if request.path.startswith('/sponsors/') and not request.session.get('sponsor_id'):
-            # Redirect to sponsor login if not authenticated
-            return redirect(reverse('sponsor_login'))
+            return redirect(reverse('sponsors:sponsor_login'))
+
         return self.get_response(request)

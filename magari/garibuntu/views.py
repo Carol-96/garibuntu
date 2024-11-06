@@ -65,6 +65,9 @@ def group_list_dash(request):
 def master_register(request):
     return render(request, 'master_registration.html')
 
+def master_login(request):
+    return render(request, 'master_login.html')
+
 @login_required
 def event_register(request, event_id):
     event = get_object_or_404(Event, id=event_id)
