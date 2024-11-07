@@ -21,6 +21,16 @@ window.onclick = function(event) {
     }
 }
 
+// Smooth Scrolling for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+
 
 // Automatically close pop-up messages after 5 seconds
 setTimeout(function() {

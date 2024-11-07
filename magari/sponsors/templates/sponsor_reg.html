@@ -3,12 +3,12 @@
 {% block title %}Sponsor Registration{% endblock %}
 
 {% block content %}
-<div class="registration-container">
+<div class="spo-registration-container">
     <h2>Register as a Sponsor</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="register-button">Register</button>
+        <button type="submit" class="spo-register-button">Register</button>
     </form>
 </div>
 {% endblock %}

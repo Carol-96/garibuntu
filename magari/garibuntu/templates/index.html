@@ -1,25 +1,75 @@
 {% extends "base.html" %}
-{% block title %}Garibuntu - Home{% endblock %}
+{% block title %}Garibuntu - Spice Up your Car Ownhership{% endblock %}
 {% block content %}
 
 <!-- Hero Section -->
 <section class="hero">
-    <h2>Welcome to Garibuntu</h2>
-    <p>Connecting car enthusiasts across Kenya.</p>
-    <a href="{% url 'users:register' %}" class="cta-button">Join the Community</a>
+    <div class="hero-section-d">
+        <h2>Welcome to Garibuntu</h2>
+        <p>Connect and make an impact alongside other car enthusiasts and communities through events, forums, and sponsorships.</p>
+        <p>It doesn't matter the car you drive, join a group, meet like-minded individuals, share, enjoy, and impact
+            lives
+            and the future.</p>
+        <a href="{% url 'users:register' %}" class="cta-button">Join the Community</a>
+    </div>
 </section>
 
-<!-- Upcoming Events -->
-<section class="section">
-    <h3>Upcoming Events</h3>
-    <div class="card-container">
-        {% for event in events %}
-            <div class="card">
-                <h4>{{ event.title }}</h4>
-                <p>{{ event.description }}</p>
-                <p><strong>Date:</strong> {{ event.date }}</p>
-                <a href="{% url 'register_for_event' event.id %}" class="btn">Register</a>
-            </div>
+<!-- About Us Section -->
+<section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>Garibuntu is a platform dedicated to uniting car enthusiasts, providing a space for sharing knowledge, organizing
+        events, and supporting communities. Whether you're a member of a car club or a sponsor looking to support a
+        worthy cause, Garibuntu brings everyone together under one hub.</p>
+    <p>We also bring you closer to trusted garages, spareparts traders, car importers, car reviewers, and mechanics for
+        your specific type of car. Indeed, we are a hub that makes your build journey seamless and keeps you closer to a
+        community with people you share the same passion.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <h2>What you Get at Garibuntu</h2>
+    <div class="service-cards">
+        <div class="service-card">
+            <h3>Events & Meetups</h3>
+            <p>Join a wide array of events organized by car groups, from charity events to exciting track days.</p>
+        </div>
+        <div class="service-card">
+            <h3>Community Forum</h3>
+            <p>Engage with fellow car enthusiasts, ask questions, and share insights on various topics.</p>
+        </div>
+        <div class="service-card">
+            <h3>Sponsorship Opportunities</h3>
+            <p>Sponsors can contribute to events and community initiatives, gaining exposure and supporting car
+                communities.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Events Section -->
+<section id="events" class="events-section-hm">
+    <h2>Upcoming Events</h2>
+    <p>Get ready to connect with other car enthusiasts, showcase your vehicle, and support meaningful causes through our
+        community events. <br> From thrilling track days to charity drives, <br>there's something for everyone. Join us
+        and
+        experience the vibrant community that is Garibuntu!</p>
+    <ul class="events-list-hm">
+        {% for event in recent_events %}
+        <li>
+            <strong>{{ event.title }}</strong> - {{ event.date|date:"F d, Y" }}
+            <p>{{ event.description|truncatewords:20 }}</p>
+            <a href="{% url 'event_detail' event.id %}">Learn More</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'events:event_list' %}" class="view-all-events">View All Events</a>
+</section>
+
+<!-- Sponsors Section -->
+<section id="sponsors" class="sponsors-section">
+    <h2>Our Sponsors</h2>
+    <div class="sponsor-logos">
+        {% for sponsor in sponsors %}
+        <img src="{{ sponsor.logo.url }}" alt="{{ sponsor.company_name }}" title="{{ sponsor.company_name }}">
         {% endfor %}
     </div>
 </section>
@@ -27,15 +77,26 @@
 <!-- Car Groups -->
 <section class="section">
     <h3>Popular Car Groups</h3>
-    <div class="card-container">
+    <div class="card-container-cg">
         {% for group in car_groups %}
-            <div class="card">
-                <h4>{{ group.name }}</h4>
-                <p>{{ group.description }}</p>
-                <a href="#" class="btn">Join Group</a>
-            </div>
+        <div class="card-cg">
+            <h4>{{ group.name }}</h4>
+            <p>{{ group.description }}</p>
+            <a href="#" class="btn">Join Group</a>
+        </div>
         {% endfor %}
     </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Got questions or suggestions? Feel free to reach out!</p>
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
 </section>
 
 {% endblock %}

@@ -2,6 +2,8 @@
 * {
     margin: 0;
     padding: 0;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
     box-sizing: border-box;
 }
 
@@ -13,7 +15,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
 }
@@ -71,28 +73,91 @@ body {
 
 /* Hero Section */
 .hero {
+    /* background: #333;
+    color: #fff;
     text-align: center;
-    padding: 2rem 0;
-    background: #f4f4f4;
+    padding: 50px 20px; */
+
+    background-image: url('../images/car-group-meet-up.webp'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    height: 100vh;
 }
 
-.hero h2 {
+/* Overlay effect for better text readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0.1, 0, 0, 0.6); /* Adjust the color and opacity as needed */
+    z-index: 1;
+}
+
+.hero h2, .hero p, .hero .cta-button {
+    position: relative;
+    z-index: 2; /* To ensure the text and button appear above the overlay */
+}
+
+.hero-section-d {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-section-d h2 {
     font-size: 2.5rem;
-    color: #003366;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
 }
 
-.hero p {
+.hero-section-d p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #f1f1f1;
+}
+
+
+/* .hero p {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
+    line-height: 1.0;
+    font-weight:400 ;
+    max-width: 800px;
+    margin: 10px auto;
+} */
 
-.cta-button {
-    background-color: #ff6600;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
+.hero .cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #013365;
+    color: #fff;
     border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
 }
+/* .cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+} */
 
 .cta-button:hover {
     background-color: #cc5200;
@@ -109,7 +174,188 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Card */
+/* Section Headings */
+section h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* About Us Section */
+.about-section {
+    padding: 40px 20px;
+    background: #f7f7f7;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #555;
+}
+
+
+/* Services Section */
+.services-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-card {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    color: #333;
+}
+
+.service-card p {
+    color: #666;
+}
+
+/* Events Section */
+.events-section-hm {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+}
+.events-section-hm  p {
+    text-align: center;
+}
+
+.events-list-hm {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.events-list-hm li {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-all-events {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Sponsors Section */
+.sponsors-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.sponsor-logos img {
+    max-width: 150px;
+    margin: 10px;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.sponsor-logos img:hover {
+    filter: grayscale(0%);
+}
+
+/* Car Groups Section */
+.section {
+    padding: 40px 20px;
+    background: #fff;
+}
+
+.card-container-cg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-cg {
+    width: 280px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-cg h4 {
+    color: #333;
+}
+
+.card-cg p {
+    color: #555;
+}
+
+.card-cg .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #27ae60;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 40px 20px;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-section button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Card 
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -144,6 +390,7 @@ body {
 .card .btn:hover {
     background: #002244;
 }
+*/
 
 /* Footer */
 .footer-container {
@@ -252,6 +499,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 30px;
 }
 
 .car-group-card {
@@ -314,7 +562,89 @@ body {
     color: #888;
   }
  
-  
+  /* Events Upfdate Page */
+  /* General styling for the events page */
+.card-container-evnt {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+.card-evnt {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.card-evnt:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-h2, .cargrp-h2 {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.evnt-p,
+.p-cargrp{
+    text-align: center;
+}
+
+.paragraph-evnt::after,
+.paragraph-cargrp::after {
+    content: "";
+    display: flex;
+    justify-self: center;
+    margin: 0 auto;
+    width: 30%;
+    border: 3px solid black;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.card-evnt h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-evnt p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.card-evnt strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.card-evnt .btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+}
+
   /* Sponsor registration Form Page*/
   /* Container styling for the sponsor registration form */
 .sponsor-registration-container {
@@ -978,3 +1308,76 @@ body {
 }
 
 
+/* Sponsor Registration Container Styling */
+.spo-registration-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spo-registration-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.spo-registration-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.spo-registration-container label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.spo-registration-container input[type="text"],
+.spo-registration-container input[type="email"],
+.spo-registration-container input[type="file"],
+.spo-registration-container input[type="password"],
+.spo-registration-container textarea,
+.spo-registration-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.spo-registration-container input[type="text"]:focus,
+.spo-registration-container input[type="email"]:focus,
+.spo-registration-container input[type="file"]:focus,
+.spo-registration-container input[type="password"]:focus,
+.spo-registration-container textarea:focus,
+.spo-registration-container select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.spo-register-button {
+    width: 100px;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+}
+
+.spo-register-button:hover {
+    background-color: #0056b3;
+}
+
+.spo-registration-container p {
+    font-size: 0.9rem;
+    color: #666;
+}

@@ -2,12 +2,17 @@
 {% block title %}Garibuntu - Events{% endblock %}
 {% block content %}
 
-<h2>Upcoming Events</h2>
-<div class="card-container">
+<h2 class="event-h2">Upcoming Events</h2>
+<div class="paragraph-evnt">
+    <p class="evnt-p">Here is a list of diverse events you can register, sponsor, or be part of as a friend of the car group.</p>
+<p class="evnt-p">Let us make a lasting impact on our lives and community.</p>
+</div>
+<div class="card-container-evnt">
     {% for event in events %}
-        <div class="card">
+        <div class="card-evnt">
             <h4>{{ event.title }}</h4>
-            <p>{{ event.description }}</p>
+            <hr>
+            <p> <strong>Description/Activity:</strong> {{ event.description }}</p>
             <p><strong>Date:</strong> {{ event.date }} at {{ event.time }}</p>
             <p><strong>Location:</strong> {{ event.location }}</p>
             <p><strong>Fee:</strong> KSH {{ event.registration_fee }}</p>

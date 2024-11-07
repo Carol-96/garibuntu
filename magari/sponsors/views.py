@@ -29,7 +29,7 @@ def sponsor_register(request):
             return redirect('sponsors:sponsor_login')  # Redirect to sponsor login after registration
     else:
         form = SponsorRegistrationForm()
-    return render(request, 'sponsor_register.html', {'form': form})
+    return render(request, 'sponsor_reg.html', {'form': form})
 
 
 

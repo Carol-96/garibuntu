@@ -66,7 +66,7 @@ def master_register(request):
     return render(request, 'master_registration.html')
 
 def master_login(request):
-    return render(request, 'master_login.html')
+    return render(request, 'master-login.html')
 
 @login_required
 def event_register(request, event_id):
