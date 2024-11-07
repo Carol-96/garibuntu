@@ -2,16 +2,16 @@
 {% block title %}Garibuntu - Login{% endblock %}
 
 {% block content %}
-<h2>Login to Your Account</h2>
-<form method="post" class="form-container">
+<h2 class="lgn-usr">Login to Your Account</h2>
+<form method="post" class="form-container-usl">
     {% csrf_token %}
     {{ form.username }}  <!-- Renders the username field with custom styles -->
     {{ form.password }}  <!-- Renders the password field with custom styles -->
     <div class="form-check">
         {{ form.remember_me }}  <!-- Renders the "Remember Me" checkbox -->
-        <label class="form-check-label" for="{{ form.remember_me.id_for_label }}">Remember Me</label>
+        <label class="form-check-label-usl" for="{{ form.remember_me.id_for_label }}">Remember Me</label>
     </div>
-    <button type="submit" class="btn">Login</button>
+    <button type="submit" class="lgn-btn">Login</button>
     <p>Don't have an account? <a href="{% url 'users:register' %}">Register here</a>.</p>
 </form>
 {% endblock %}
