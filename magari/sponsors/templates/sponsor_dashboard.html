@@ -17,6 +17,7 @@
                 <p>{{ user.sponsor.phone_number }}</p>
                 <a href="{{ user.sponsor.website_url }}" target="_blank">Visit Website</a>
             </div>
+            <a class="sponsor-logout" href="{% url 'garibuntu:logout' %}">Logout</a>
         </div>
     </header>
 
@@ -55,6 +56,7 @@
             <h2>Manage Sponsorships</h2>
             <p>View and update your current sponsorships for car community events.</p>
             <a href="{% url 'sponsors:sponsor_event' %}" class="btn-primary">Manage Sponsorships</a>
+            
         </section>
 
         <section class="dashboard-section">

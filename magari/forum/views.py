@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ForumThread, ForumPost, ForumReply
-from .forms import ThreadForm, PostForm, ReplyForm
+from .forms import ThreadForm, PostForm, ReplyForm, ForumThreadForm
 from django.contrib.auth.decorators import user_passes_test
 from django.utils import timezone
 from datetime import timedelta
@@ -9,9 +9,13 @@ from django.contrib import messages
 
 
 # List of all threads
+@login_required
 def thread_list(request):
     threads = ForumThread.objects.all()
-    return render(request, 'thread_list.html', {'threads': threads})
+    form = ForumThreadForm()  # Instantiate the form
+
+    # Render template with threads and form
+    return render(request, 'thread_list.html', {'threads': threads, 'form': form})
 
 # Detail view for a thread, showing posts
 @login_required
@@ -83,7 +87,7 @@ def create_thread(request):
             thread = form.save(commit=False)
             thread.created_by = request.user
             thread.save()
-            return redirect('forum:thread_detail', thread_id=thread.id)
+            return redirect('forum:thread_list')
     else:
         form = ThreadForm()
     return render(request, 'create_thread.html', {'form': form})

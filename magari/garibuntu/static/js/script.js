@@ -93,3 +93,29 @@ async function markAsSponsored(eventId) {
 function getCSRFToken() {
     return document.cookie.split('; ').find(row => row.startsWith('csrftoken')).split('=')[1];
 }
+
+
+
+
+
+// Thread
+// Get modal element
+const modal = document.getElementById("newThreadModal");
+
+// Function to open modal
+function openModal() {
+    modal.style.display = "flex";
+}
+
+// Function to close modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Close modal when clicking outside of modal content
+window.onclick = function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+

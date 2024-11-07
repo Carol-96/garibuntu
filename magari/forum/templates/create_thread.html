@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Create New Thread</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create Thread</button>
-</form>
+<div class="modal" id="newThreadModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Create New Thread</h2>
+        
+        <form method="post" action="{% url 'forum:create_thread' %}">
+            {% csrf_token %}
+            
+            <!-- Title field -->
+            <label for="id_title">Thread Title:</label>
+            {{ form.title }}
+            
+            <!-- Description field -->
+            <label for="id_description">Thread Description:</label>
+            {{ form.description }}
+
+            <!-- Submit button -->
+            <button type="submit">Create Thread</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
+
+

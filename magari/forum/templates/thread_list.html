@@ -1,27 +1,65 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Thread List</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - Garibuntu</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
+</head>
+<body>
+    <header class="forum-header">
+        <h1>Garibuntu Community Forum</h1>
+        <p>Engage with fellow car enthusiasts and join the discussions.</p>
+        <a href="#" class="create-thread-btn" onclick="openModal()">+ Start New Thread</a>
+        <a class="back-to-dash" href="{% url 'garibuntu:dashboard' %}">Back to Dashboard</a>
+    </header>
 
-{% for thread in threads %}
-  {% if not thread.is_deleted %}
-    <div class="thread">
-      <h2>{{ thread.title }}</h2>
-      
-      {% if thread.is_locked %}
-        <span class="lock-icon" title="This thread is locked">🔒</span>
-      {% endif %}
-      
-      <p>{{ thread.content|truncatewords:20 }}</p>
-      
-      <a href="{% url 'forum:thread_detail' thread.id %}">View Thread</a>
-    </div>
-  {% else %}
-    <div class="thread-deleted">
-      <p>This thread has been deleted and is no longer available.</p>
-    </div>
-  {% endif %}
-{% empty %}
-  <p>No threads available.</p>
-{% endfor %}
+    <main class="forum-content">
+        <section class="thread-list">
+            <h2>Forum Threads</h2>
+            <div class="threads">
+                {% for thread in threads %}
+                    <div class="thread">
+                        <h3><a href="{% url 'forum:thread_detail' thread.id %}">{{ thread.title }}</a></h3>
+                        <p>{{ thread.description|truncatewords:20 }}</p>
+                        <small>Created by: {{ thread.created_by }} on {{ thread.date_created|date:"F d, Y" }}</small>
+                        <span>{{ thread.reply_count }} replies</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 
-{% endblock %}
+    <!-- Modal Structure -->
+    <div class="modal" id="newThreadModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Create New Thread</h2> 
+            
+            <form method="post" action="{% url 'forum:create_thread' %}">
+                {% csrf_token %}
+                
+                <!-- Title Field -->
+                <label for="id_title">Thread Title:</label>
+                {{ form.title }}
+
+                <!-- Description Field -->
+                <label for="id_description">Thread Text:</label>
+                {{ form.description }}
+
+                <!-- Submit Button -->
+                <button type="submit">Create Thread</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="forum-footer">
+        <p>&copy; 2024 Garibuntu. All rights reserved.</p>
+        <a href="{% url 'garibuntu:dashboard' %}" class="dashboard-link">Return to Dashboard</a>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
