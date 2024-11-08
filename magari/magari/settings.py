@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "default-secret-key")  # Use a fallback for
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # Allowed hosts
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost").split(",")
+ALLOWED_HOSTS = ['ndigirigib.pythonanywhere.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -108,6 +108,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
